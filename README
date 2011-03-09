@@ -1,0 +1,5 @@
+##Lines to add to ~/.bashrc
+
+if [ -f ~/src/dotfiles/.bashrc ]; then
+  . ~/src/dotfiles/.bashrc
+fi
