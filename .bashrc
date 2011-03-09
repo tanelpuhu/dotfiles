@@ -1,19 +1,22 @@
 #!/bin/bash
 
-srcdir='/home/tanel/src'
+srcdir=$HOME/src
 
 export PATH="$PATH:$srcdir/git-achievements"
 
 #aliases
-for filename in $(ls $srcdir/dotfiles/aliases/*); do
-  . $filename
-done
+if [ -d $srcdir/dotfiles/aliases/ ]; then
+  for filename in $(ls $srcdir/dotfiles/aliases/*); do
+    . $filename
+  done
+fi;
 
 #secret files :)
-for filename in $(ls $srcdir/dotfiles/secret/*); do
-  . $filename
-done
-
+if [ -d $srcdir/dotfiles/secrets/ ]; then
+  for filename in $(ls $srcdir/dotfiles/secrets/*); do
+    . $filename
+  done
+fi;
 
 #functions
 function g(){
