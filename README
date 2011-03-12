@@ -1,4 +1,5 @@
-##Lines to add to ~/.bashrc or ~/.profile
+Lines to add to ~/.bashrc or ~/.profile
+=======================================
 
 if [ -f ~/src/dotfiles/.bashrc ]; then
   . ~/src/dotfiles/.bashrc
