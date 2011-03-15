@@ -4,3 +4,11 @@ Lines to add to ~/.bashrc or ~/.profile
 if [ -f ~/src/dotfiles/.bashrc ]; then
   . ~/src/dotfiles/.bashrc
 fi
+
+Gnome terminal settings
+=======================
+
+cd ~/.gconf/apps/
+rm gnome-terminal
+ln -s ~/src/dotfiles/gconf/gnome-terminal
+
