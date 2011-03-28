@@ -18,3 +18,5 @@ alias pyserv='python -m SimpleHTTPServer 8080'
 
 alias git='git-achievements'
 alias edit='geany'
+
+alias fon='ssh root@fon.lusikas.com'
