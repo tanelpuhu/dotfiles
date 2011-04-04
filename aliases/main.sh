@@ -6,6 +6,8 @@ alias h='history'
 alias ll='ls -lStrh'
 alias df='df -h'
 
+alias desk='cd ~/Desktop/'
+
 alias ci='svn ci'
 alias up='svn up'
 alias ldiff='svn diff | less'
