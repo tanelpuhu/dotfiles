@@ -6,6 +6,8 @@ alias h='history'
 alias ll='ls -lStrh'
 alias df='df -h'
 
+alias desk='cd ~/Desktop/'
+
 alias ci='svn ci'
 alias up='svn up'
 alias ldiff='svn diff | less'
@@ -18,3 +20,5 @@ alias pyserv='python -m SimpleHTTPServer 8080'
 
 alias git='git-achievements'
 alias edit='geany'
+
+alias fon='ssh root@fon.lusikas.com'
