@@ -22,3 +22,5 @@ alias git='git-achievements'
 alias edit='geany'
 
 alias fon='ssh root@fon.lusikas.com'
+
+alias pipe='echo \|'

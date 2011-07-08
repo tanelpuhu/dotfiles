@@ -3,6 +3,7 @@
 srcdir=$HOME/src
 
 export PATH="$PATH:$srcdir/git-achievements"
+export PS1="\u@\h\w$ "
 
 #aliases
 if [ -d $srcdir/dotfiles/aliases/ ]; then
