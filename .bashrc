@@ -21,7 +21,7 @@ fi;
 
 #functions
 function g(){
-  geany $@ &
+  sublime $@ &
 }
 
 function blame(){

@@ -22,3 +22,5 @@
 
 [achievement]
   upload = true
+[core]
+	excludesfile = /home/tanel/.gitignore
