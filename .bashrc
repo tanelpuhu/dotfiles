@@ -32,6 +32,11 @@ function svnlog(){
   svn log -l 50 | less
 }
 
+function lint(){
+  pylint $@ | less
+}
+
+
 mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
 mktgz() { tar cvzf "${1%%/}.tgz"  "${1%%/}/"; }
 
