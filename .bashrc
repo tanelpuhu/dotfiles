@@ -36,7 +36,11 @@ function lint(){
   pylint $@ | less
 }
 
+function svndi(){
+  svn di $@ | colordiff | less -R
+}
 
-mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
-mktgz() { tar cvzf "${1%%/}.tgz"  "${1%%/}/"; }
+
+mktar() { tar cvf  "${1%%/}.tar" "${1%%/}/"; }
+mktgz() { tar cvzf "${1%%/}.tgz" "${1%%/}/"; }
 
