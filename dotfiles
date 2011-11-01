@@ -6,41 +6,40 @@ export PATH="$PATH:$srcdir/git-achievements"
 export PS1="\u@\h\w$ "
 
 #aliases
-if [ -d $srcdir/dotfiles/aliases/ ]; then
-  for filename in $(ls $srcdir/dotfiles/aliases/*); do
+if [ -d $srcdir/dotfiles/base/ ]; then
+  for filename in $(ls $srcdir/dotfiles/base/*); do
     . $filename
   done
 fi;
 
 #secret files :)
-if [ -d $srcdir/dotfiles/secrets/ ]; then
-  for filename in $(ls $srcdir/dotfiles/secrets/*); do
+if [ -d $srcdir/dotfiles/local/ ]; then
+  for filename in $(ls $srcdir/dotfiles/local/*); do
     . $filename
   done
 fi;
 
 #functions
-function g(){
+g(){
   sublime $@ &
 }
 
-function blame(){
+blame(){
   svn blame $@ | less
 }
 
-function svnlog(){
+svnlog(){
   svn log -l 50 | less
 }
 
-function lint(){
+lint(){
   pylint $@ | less
 }
 
-function svndi(){
+svndi(){
   svn di $@ | colordiff | less -R
 }
 
 
 mktar() { tar cvf  "${1%%/}.tar" "${1%%/}/"; }
 mktgz() { tar cvzf "${1%%/}.tgz" "${1%%/}/"; }
-
