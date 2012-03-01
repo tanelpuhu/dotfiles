@@ -21,7 +21,7 @@ fi;
 
 #functions
 g(){
-  sublime $@ &
+  $HOME/bin/sublime/sublime_text $@ &
 }
 
 blame(){
@@ -29,7 +29,7 @@ blame(){
 }
 
 svnlog(){
-  svn log -l 50 | less
+  svn log -vl 50 | less
 }
 
 lint(){
@@ -40,6 +40,9 @@ svndi(){
   svn di $@ | colordiff | less -R
 }
 
+ttail(){
+  tail -f $@ | while read; do echo -e "$(date +%T.%N) $REPLY"; done
+}
 
 mktar() { tar cvf  "${1%%/}.tar" "${1%%/}/"; }
 mktgz() { tar cvzf "${1%%/}.tgz" "${1%%/}/"; }
