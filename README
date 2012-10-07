@@ -1,8 +1,0 @@
-Lines to add to ~/.bashrc or ~/.profile
-=======================================
-
-if [ -f ~/src/dotfiles/dotfiles ]; then
-  . ~/src/dotfiles/dotfiles
-fi
-
-
