@@ -1,0 +1,30 @@
+[user]
+  name = Tanel Puhu
+  email = tanel@tanelpuhu.com
+
+[color]
+  ui = true
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+
+[alias]
+  st = status
+  br = branch
+  ci = commit
+  co = checkout
+  di = diff
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+
+[achievement]
+  upload = true
+
+[core]
+  excludesfile = /home/tanel/.gitignore
+
+[merge]
+  tool = meld
+
+[cola]
+  fontdiff = Monospace,9,-1,5,50,0,0,0,0,0

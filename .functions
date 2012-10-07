@@ -1,0 +1,37 @@
+#!/bin/bash
+? () {
+  echo "$*" | bc -l;
+} # $ ? 1337 - 1295   => 42
+
+g(){
+  $HOME/bin/sublime/sublime_text $@ &
+}
+
+blame(){
+  svn blame $@ | less
+}
+
+svnlog(){
+  svn log -vl 50 | less
+}
+
+lint(){
+  pylint $@ | less
+}
+
+svndi(){
+  svn di $@ | colordiff | less -R
+}
+
+ttail(){
+  tail -f $@ | while read; do echo -e "$(date +%T.%N) $REPLY"; done
+}
+
+mktar() {
+  tar cvf  "${1%%/}.tar" "${1%%/}/";
+}
+
+mktgz() {
+  tar cvzf "${1%%/}.tgz" "${1%%/}/";
+}
+
