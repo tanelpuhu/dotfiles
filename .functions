@@ -12,7 +12,7 @@ blame(){
 }
 
 svnlog(){
-  svn log -vl 50 | less
+  svn log -vl 50 $@ | less
 }
 
 lint(){
