@@ -1,5 +1,5 @@
 #!/bin/bash
-for prog in rsync git screen wput htop irssi bitlbee autossh vnstat colordiff; do
+for prog in rsync git screen wput htop irssi bitlbee autossh vnstat colordiff xclip; do
   if [[ ! "$(type -P $prog)" ]]; then
     DO_INSTALL="$DO_INSTALL $prog"
   fi
