@@ -1,22 +1,8 @@
 #!/bin/bash
-DROPBOX=$HOME/Dropbox
-SSH_CONFIG=$HOME/.ssh/config
-SSH_CONFIG_DB=$DROPBOX/symlinks/ssh_config
-
 cd "$(dirname "$0")"
-. installs.sh
 git pull
 function doIt() {
-  rsync --exclude ".git/" --exclude "sync.sh" --exclude "installs.sh" --exclude "README.md" -av . ~
-  if [ -d $DROPBOX ]; then
-    if [ -e $SSH_CONFIG_DB ]; then
-      echo -n "Copying ssh config... "
-      cp -f $SSH_CONFIG_DB $SSH_CONFIG
-      chmod 600 $SSH_CONFIG
-      echo "done"
-    fi
-  fi
-
+  . install.sh
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

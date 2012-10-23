@@ -1,4 +1,8 @@
 #!/bin/bash
+DROPBOX=$HOME/Dropbox
+SSH_CONFIG=$HOME/.ssh/config
+SSH_CONFIG_DB=$DROPBOX/symlinks/ssh_config
+
 for prog in rsync git screen wput htop irssi bitlbee autossh vnstat colordiff xclip; do
   if [[ ! "$(type -P $prog)" ]]; then
     DO_INSTALL="$DO_INSTALL $prog"
@@ -12,5 +16,16 @@ if [[ $DO_INSTALL ]]; then
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     sudo apt-get install $DO_INSTALL
     sudo -K
+  fi
+fi
+
+rsync --exclude ".git/" --exclude "sync.sh" --exclude "install.sh" --exclude "README.md" -av . ~
+
+if [ -d $DROPBOX ]; then
+  if [ -e $SSH_CONFIG_DB ]; then
+    echo -n "Copying ssh config... "
+    cp -f $SSH_CONFIG_DB $SSH_CONFIG
+    chmod 600 $SSH_CONFIG
+    echo "done"
   fi
 fi
