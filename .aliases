@@ -11,7 +11,9 @@ alias ll='ls -lStrh'
 alias df='df -h'
 alias up='svn up'
 
-alias git='git-achievements'
+if [ -d "$HOME/src/git-achievements" ]; then
+  alias git='git-achievements'
+fi
 
 alias grep='grep --exclude-dir=.svn --color=auto'
 
