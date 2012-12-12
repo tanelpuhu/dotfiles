@@ -29,3 +29,8 @@ if [ -d $DROPBOX ]; then
     echo "done"
   fi
 fi
+
+# https://github.com/rupa/z
+mkdir -p ~/src/z
+curl https://raw.github.com/rupa/z/master/z.sh > ~/src/z/z.sh
+chmod +x ~/src/z/z.sh

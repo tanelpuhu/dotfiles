@@ -7,3 +7,4 @@ done
 unset file
 
 . /etc/bash_completion
+[ -r ~/src/z/z.sh ] && . ~/src/z/z.sh
