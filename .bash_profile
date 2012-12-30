@@ -7,4 +7,5 @@ done
 unset file
 
 . /etc/bash_completion
+_Z_NO_RESOLVE_SYMLINKS=1
 [ -r ~/src/z/z.sh ] && . ~/src/z/z.sh
