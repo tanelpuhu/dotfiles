@@ -16,6 +16,14 @@
   co = checkout
   di = diff
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  switch = !legit switch \"$@\"
+  branches = !legit branches
+  sprout = !legit sprout \"$@\"
+  unpublish = !legit unpublish \"$@\"
+  harvest = !legit harvest \"$@\"
+  sync = !legit sync \"$@\"
+  publish = !legit publish \"$@\"
+  graft = !legit graft \"$@\"
 
 [achievement]
   upload = true
