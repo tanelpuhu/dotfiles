@@ -1,0 +1,11 @@
+path_if_exists() {
+    if [[ -d "$1" ]]; then
+        PATH="$1:$PATH"
+    fi
+}
+
+path_if_exists "$HOME/bin"
+path_if_exists "$HOME/Dropbox/bin"
+path_if_exists "$HOME/src/dotfiles/bin"
+path_if_exists "$HOME/src/git-achievements"
+path_if_exists "$HOME/src/google_appengine"

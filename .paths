@@ -1,4 +1,0 @@
-[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
-[ -d "$HOME/Dropbox/bin" ] && PATH="$HOME/Dropbox/bin:$PATH"
-[ -d "$HOME/src/git-achievements" ] && PATH="$HOME/src/git-achievements:$PATH"
-[ -d "$HOME/src/google_appengine" ] && PATH="$HOME/src/google_appengine:$PATH"
