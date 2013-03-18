@@ -103,6 +103,10 @@ install_dotfiles () {
   done
 }
 
+install_dotfolders() {
+  rsync -av .js .config ~
+}
+
 install_programs() {
   info 'installing programs'
   echo ''
@@ -142,6 +146,7 @@ create_dropbox_links () {
 }
 
 install_dotfiles
+install_dotfolders
 install_programs
 create_dropbox_links
 
