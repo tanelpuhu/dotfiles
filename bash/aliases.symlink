@@ -6,6 +6,7 @@ alias q="exit"
 alias h='history'
 alias s='screen -Rd'
 alias d='cd ~/Desktop/'
+alias t='tmux attach'
 
 alias ll='ls -lStrh'
 alias df='df -h'
