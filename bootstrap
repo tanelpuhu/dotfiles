@@ -110,8 +110,7 @@ install_dotfolders() {
 install_programs() {
   info 'installing programs'
   echo ''
-  apt-get -qq update
-  apt-get -yqq install rsync curl vim git-core screen htop vnstat colordiff xclip python-pip
+  apt-get -yqq install rsync curl vim git-core screen tmux htop vnstat colordiff xclip python-pip
   echo ''
   success 'installed'
 
@@ -133,15 +132,15 @@ install_programs() {
 
 create_dropbox_links () {
   DROPBOX=$HOME/Dropbox
+  mkdir -p $DROPBOX
   SSH_CONFIG=$HOME/.ssh/config
   SSH_CONFIG_DB=$DROPBOX/symlinks/ssh_config
-  mkdir -p $DROPBOX
 
   if [[ -e $SSH_CONFIG_DB ]]; then
-    info "copying ssh config"
-    cp -f $SSH_CONFIG_DB $SSH_CONFIG
+    mv $SSH_CONFIG $SSH_CONFIG\.backup
+    success "moved $SSH_CONFIG to $SSH_CONFIG.backup"
+    link_files $SSH_CONFIG_DB $SSH_CONFIG
     chmod 600 $SSH_CONFIG
-    success "ssh config copied"
   fi
 }
 
@@ -150,7 +149,8 @@ install_dotfolders
 install_programs
 create_dropbox_links
 
-echo ''
+echo
 echo '  All installed!'
+echo
 
 source ~/.bash_profile
