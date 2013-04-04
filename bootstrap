@@ -110,7 +110,7 @@ install_dotfolders() {
 install_programs() {
   info 'installing programs'
   echo ''
-  apt-get -yqq install rsync curl vim git-core screen tmux htop vnstat colordiff xclip python-pip
+  apt-get -yqq install rsync curl vim git-core screen tmux htop vnstat colordiff xclip python-pip realpath
   echo ''
   success 'installed'
 
