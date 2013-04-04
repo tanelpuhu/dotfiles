@@ -6,6 +6,10 @@ path_if_exists() {
 
 path_if_exists "$HOME/bin"
 path_if_exists "$HOME/Dropbox/bin"
-path_if_exists "$HOME/src/dotfiles/bin"
 path_if_exists "$HOME/src/git-achievements"
 path_if_exists "$HOME/src/google_appengine"
+
+bash_profile_realpath=$(realpath ~/.bash_profile 2>/dev/null)
+if [[ "$bash_profile_realpath" ]]; then
+    path_if_exists "$(dirname $(dirname $bash_profile_realpath))/bin/"
+fi
