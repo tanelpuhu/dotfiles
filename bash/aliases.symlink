@@ -24,6 +24,6 @@ alias pyserv='python -m SimpleHTTPServer 8080'
 
 alias upgrade='sudo apt-get update ; sudo apt-get upgrade'
 
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
-
+alias lock="xtrlock"
