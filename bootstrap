@@ -103,9 +103,6 @@ install_dotfiles () {
   done
 }
 
-install_dotfolders() {
-  rsync -av .js .config ~
-}
 
 install_programs() {
   info 'installing programs'
@@ -120,32 +117,31 @@ install_programs() {
   echo ''
   success "pip requirements installed"
 
-  if [[ ! -d $HOME/src/z/ ]]; then
-    info "downloading z"
-    mkdir -p $HOME/src/z
-    curl https://raw.github.com/rupa/z/master/z.sh > $HOME/src/z/z.sh
-    chmod +x $HOME/src/z/z.sh
-    success "z installed"
-  fi
-
 }
 
 create_dropbox_links () {
   DROPBOX=$HOME/Dropbox
   mkdir -p $DROPBOX
-  SSH_CONFIG=$HOME/.ssh/config
-  SSH_CONFIG_DB=$DROPBOX/symlinks/ssh_config
+  if [[ -d "$DROPBOX"  ]]; then
+    if [[ -d "$DROPBOX/symlinks/dotjs" ]]; then
+      if [[ ! -d  ~/.js ]]; then
+        ln -s $DROPBOX/symlinks/dotjs/ ~/.js
+      fi
+    fi
 
-  if [[ -e $SSH_CONFIG_DB ]]; then
-    mv $SSH_CONFIG $SSH_CONFIG\.backup
-    success "moved $SSH_CONFIG to $SSH_CONFIG.backup"
-    link_files $SSH_CONFIG_DB $SSH_CONFIG
-    chmod 600 $SSH_CONFIG
+    SSH_CONFIG=$HOME/.ssh/config
+    SSH_CONFIG_DB=$DROPBOX/symlinks/ssh_config
+
+    if [[ -e $SSH_CONFIG_DB ]]; then
+      mv $SSH_CONFIG $SSH_CONFIG\.backup
+      success "moved $SSH_CONFIG to $SSH_CONFIG.backup"
+      link_files $SSH_CONFIG_DB $SSH_CONFIG
+      chmod 600 $SSH_CONFIG
+    fi
   fi
 }
 
 install_dotfiles
-install_dotfolders
 install_programs
 create_dropbox_links
 

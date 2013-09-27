@@ -4,23 +4,23 @@
 } # $ ? 1337 - 1295   => 42
 
 blame(){
-  svn blame $@ | less
+  svn blame $@ | less -X
 }
 
 svnlog(){
-  svn log -vl 50 $@ | less
+  svn log -vl 50 $@ | less -X
 }
 
 svndi(){
-  svn di $@ | colordiff | less -R
+  svn di $@ | colordiff | less -RX
 }
 
 changset(){
-  svn log --diff -vr $@ | colordiff | less -R
+  svn log --diff -vr $@ | colordiff | less -RX
 }
 
 lint(){
-  pylint $@ | less
+  pylint $@ | less -X
 }
 
 ttail(){
