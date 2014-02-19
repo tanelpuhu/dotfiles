@@ -19,8 +19,6 @@ fi
 
 alias grep='grep --exclude-dir=.svn --color=auto'
 
-alias ldiff='svn diff | less'
-
 alias pyserv='python -m SimpleHTTPServer 8080'
 
 alias upgrade='sudo apt-get upgrade'
