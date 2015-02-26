@@ -4,7 +4,12 @@
 } # $ ? 1337 - 1295   => 42
 
 blame(){
-  svn blame $@ | less -XF
+  if [[ "$1" == "-n" ]]; then
+    shift
+    svn blame $@ | sort -nr | less -XF
+  else
+    svn blame $@ | less -XF
+  fi
 }
 
 svnlog(){
@@ -25,6 +30,12 @@ lint(){
 
 ttail(){
   tail -f $@ | while read; do echo -e "$(date +%T.%N) $REPLY"; done
+}
+
+tpipe(){
+  while read; do
+    echo -e "$(date +%T.%N) $REPLY";
+  done
 }
 
 mktar() {

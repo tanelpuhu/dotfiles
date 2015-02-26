@@ -24,6 +24,7 @@
   sync = !legit sync \"$@\"
   publish = !legit publish \"$@\"
   graft = !legit graft \"$@\"
+  prod = push production master
 
 [achievement]
   upload = true
@@ -36,3 +37,7 @@
 
 [cola]
   fontdiff = Monospace,9,-1,5,50,0,0,0,0,0
+
+[guitool "Sublime"]
+  cmd = subl $FILENAME
+  noconsole = yes

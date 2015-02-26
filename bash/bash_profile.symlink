@@ -2,8 +2,9 @@
 [ -z "$PS1" ] && return
 
 for file in ~/.{extra,paths,aliases,functions,exports}; do
-  [ -r "$file" ] && source "$file"
+  [ -r "$file" ] && . "$file"
 done
 unset file
 
 . /etc/bash_completion
+. ~/bin/bash_completion
