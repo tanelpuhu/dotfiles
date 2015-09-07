@@ -5,6 +5,7 @@ path_if_exists() {
 }
 
 path_if_exists "$HOME/bin"
+path_if_exists "$HOME/local/bin"
 path_if_exists "$HOME/Dropbox/bin"
 path_if_exists "$HOME/src/git-achievements"
 path_if_exists "$HOME/src/google_appengine"

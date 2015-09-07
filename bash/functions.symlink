@@ -45,3 +45,7 @@ mktar() {
 mktgz() {
   tar cvzf "${1%%/}.tgz" "${1%%/}/";
 }
+
+gw() {
+  grep -rw $@
+}
