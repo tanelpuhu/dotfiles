@@ -49,3 +49,21 @@ mktgz() {
 gw() {
   grep -rw $@
 }
+
+venv () {
+  local DIRECTORY=${HOME}/src/venv
+  if [[ ! -d "${DIRECTORY}" ]]; then
+    echo "creating directory: ${DIRECTORY}..."
+    mkdir -p ${DIRECTORY}
+  fi
+
+  if [[ "$1" ]]; then
+    DIRECTORY="${DIRECTORY}/$1"
+    if [[ ! -d "${DIRECTORY}" ]]; then
+        virtualenv ${DIRECTORY}
+    fi
+    . ${DIRECTORY}/bin/activate
+  else
+    echo "Specify virtualenv name!"
+  fi
+}

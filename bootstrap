@@ -103,22 +103,6 @@ install_dotfiles () {
   done
 }
 
-
-install_programs() {
-  info 'installing programs'
-  echo ''
-  apt-get -yqq install rsync curl vim git-core screen tmux htop vnstat colordiff xclip python-pip realpath
-  echo ''
-  success 'installed'
-
-  info "installing pip requirements"
-  echo ''
-  pip install -qr pip/requirements.txt
-  echo ''
-  success "pip requirements installed"
-
-}
-
 create_dropbox_links () {
   DROPBOX=$HOME/Dropbox
   mkdir -p $DROPBOX
@@ -142,7 +126,6 @@ create_dropbox_links () {
 }
 
 install_dotfiles
-install_programs
 create_dropbox_links
 
 echo

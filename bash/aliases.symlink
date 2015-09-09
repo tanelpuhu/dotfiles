@@ -14,18 +14,17 @@ alias ll='ls -lStrh'
 alias df='df -h'
 alias up='svn up'
 
-if [ -d "$HOME/src/git-achievements" ]; then
-  alias git='git-achievements'
-fi
-
 alias grep='grep --exclude-dir=.svn --color=auto'
 
 alias pyserv='python -m SimpleHTTPServer 8080'
 
-alias upgrade='sudo apt-get upgrade'
-
 alias ip="curl http://icanhazip.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
 alias lock="xtrlock"
 alias pc="proxychains4"
 alias pif="fab -f ~/bin/fabfile.py"
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias vlc='open -a vlc'
+fi

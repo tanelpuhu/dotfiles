@@ -1,8 +1,0 @@
-flask
-reindent
-feedparser
-legit
-pylint
-redis
-requests
-virtualenv
