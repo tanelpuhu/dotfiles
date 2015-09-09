@@ -1,16 +1,14 @@
-alias ls='ls --color=auto'
 alias ..='cd ..'
 alias -- -="cd -"
 alias c='clear'
 alias q="exit"
 alias f="find . -name"
 alias h='history'
-# alias s='screen -Rd'
+alias s='screen -Rd'
 alias d='cd ~/Desktop/'
 alias t='tmux attach'
-alias g='/usr/bin/subl'
+alias g='subl'
 
-alias ll='ls -lStrh'
 alias df='df -h'
 alias up='svn up'
 
@@ -27,4 +25,7 @@ alias pif="fab -f ~/bin/fabfile.py"
 
 if [[ "$(uname)" == "Darwin" ]]; then
   alias vlc='open -a vlc'
+  alias ll='ls -lhtrG'
+else
+  alias ll='ls -lStrh --color=auto'
 fi

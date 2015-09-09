@@ -4,7 +4,9 @@
 for file in ~/.{extra,paths,aliases,functions,exports}; do
   [ -r "$file" ] && . "$file"
 done
-unset file
 
-. /etc/bash_completion
-. ~/bin/bash_completion
+for file in /etc/bash_completion ~/bin/bash_completion ~/.git-completion.bash; do
+  [ -r "$file" ] && . "$file"
+done
+
+unset file
