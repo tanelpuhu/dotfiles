@@ -10,6 +10,10 @@ if [[ "$(which subl)" ]]; then
     export EDITOR="subl -w"
     export GUI_EDITOR="subl -w"
     export SVN_EDITOR='subl -w'
+else
+    export EDITOR=vim
+    export GUI_EDITOR=vim
+    export SVN_EDITOR=vim
 fi
 
 # Don't clear the screen after quitting a manual page
