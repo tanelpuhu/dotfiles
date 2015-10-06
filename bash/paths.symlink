@@ -5,5 +5,5 @@ path_if_exists() {
 }
 
 path_if_exists "$HOME/bin"
+path_if_exists "$HOME/bin/wurx"
 path_if_exists "$HOME/local/bin"
-path_if_exists "$HOME/Dropbox/bin"

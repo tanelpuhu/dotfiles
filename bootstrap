@@ -99,24 +99,27 @@ install_dotfiles () {
 }
 
 create_dropbox_links () {
-  DROPBOX=$HOME/Dropbox
-  mkdir -p $DROPBOX
-  if [[ -d "$DROPBOX"  ]]; then
-    if [[ -d "$DROPBOX/symlinks/dotjs" ]]; then
-      if [[ ! -d  ~/.js ]]; then
-        ln -s $DROPBOX/symlinks/dotjs/ ~/.js
-      fi
-    fi
+  DROPBOX=${HOME}/Dropbox/
+  SSHCONF_DEST=${HOME}/.ssh/config
+  SSHCONF_SRC=${DROPBOX}/symlinks/ssh_config
+  DOTJS=${DROPBOX}/symlinks/dotjs
 
-    SSH_CONFIG=$HOME/.ssh/config
-    SSH_CONFIG_DB=$DROPBOX/symlinks/ssh_config
+  if [[ -h ~/.js ]]; then
+    success "Link ~/.js exists"
+  elif [[ -d  ~/.js ]]; then
+    fail "Directory ~/.js exists"
+  else
+    ln -s ${DOTJS} ~/.js
+    success "linked ~/.js"
+  fi
 
-    if [[ -e $SSH_CONFIG_DB ]]; then
-      mv $SSH_CONFIG $SSH_CONFIG\.backup
-      success "moved $SSH_CONFIG to $SSH_CONFIG.backup"
-      link_files $SSH_CONFIG_DB $SSH_CONFIG
-      chmod 600 $SSH_CONFIG
+  if [[ -e ${SSHCONF_SRC} ]]; then
+    if [[ -e ${SSHCONF_DEST} ]]; then
+      mv ${SSHCONF_DEST} ${SSHCONF_DEST}.backup
+      success "moved ${SSHCONF_DEST} to ${SSHCONF_DEST}.backup"
     fi
+    link_files ${SSHCONF_SRC} ${SSHCONF_DEST}
+    chmod 600 ${SSHCONF_DEST}
   fi
 }
 
