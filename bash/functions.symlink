@@ -17,7 +17,7 @@ svnlog(){
 }
 
 svndi(){
-  svn di $@ | colordiff | less -RXF
+  svn di -x -U5 --diff-cmd=diff $@ | colordiff | less -RXF
 }
 
 changset(){
@@ -48,6 +48,10 @@ mktgz() {
 
 gw() {
   grep -rw $@
+}
+
+fsub(){
+  find . -name $@ | xargs subl
 }
 
 venv () {
