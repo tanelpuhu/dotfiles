@@ -6,7 +6,7 @@ if [[ "$(which git)" ]]; then
     export PS1="\u@\w\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
 fi
 
-if [[ "$(which subl)" ]]; then
+if [[ "$(which subl)" && -z "${SSH_TTY}" ]]; then
     export EDITOR="subl -w"
     export GUI_EDITOR="subl -w"
     export SVN_EDITOR='subl -w'
