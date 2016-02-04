@@ -71,3 +71,14 @@ venv () {
     echo "Specify virtualenv name!"
   fi
 }
+
+demomode() {
+  if [[ -z "${__DEMOMODE_PS1}" ]]; then
+    export __DEMOMODE_PS1=${PS1}
+    export PS1="$ "
+    clear
+  else
+    export PS1="${__DEMOMODE_PS1}"
+    unset __DEMOMODE_PS1
+  fi
+}

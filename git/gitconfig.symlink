@@ -41,3 +41,5 @@
 [guitool "Sublime"]
   cmd = subl $FILENAME
   noconsole = yes
+[push]
+  default = current
