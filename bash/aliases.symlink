@@ -16,12 +16,13 @@ alias grep='grep --exclude-dir=.git --exclude-dir=.svn --color=auto'
 
 alias pyserv='python -m SimpleHTTPServer 8080'
 
-alias ip="curl http://icanhazip.com"
-alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
-
 alias lock="xtrlock"
 alias pc="proxychains4"
 alias pif="fab -f ~/bin/fabfile.py"
+
+alias pcip="pc curl http://icanhazip.com"
+alias ip="curl http://icanhazip.com"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 
 if [[ "$(uname)" == "Darwin" ]]; then
   alias vlc='open -a vlc'
