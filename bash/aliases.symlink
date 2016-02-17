@@ -12,7 +12,7 @@ alias g='subl'
 alias df='df -h'
 alias up='svn up'
 
-alias grep='grep --exclude-dir=.svn --color=auto'
+alias grep='grep --exclude-dir=.git --exclude-dir=.svn --color=auto'
 
 alias pyserv='python -m SimpleHTTPServer 8080'
 

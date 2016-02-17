@@ -29,7 +29,13 @@ lint(){
 }
 
 ttail(){
-  tail -f $@ | while read; do echo -e "$(date +%T.%N) $REPLY"; done
+  if [[ -z "$1" ]]; then
+    while read; do
+      echo -e "$(date +%T.%N) $REPLY";
+    done
+  else
+    tail -f $@ | while read; do echo -e "$(date +%T.%N) $REPLY"; done
+  fi
 }
 
 tpipe(){

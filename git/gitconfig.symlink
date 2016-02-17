@@ -15,17 +15,18 @@
   ci = commit
   co = checkout
   di = diff
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  switch = !legit switch \"$@\"
+  lol = log --graph --decorate --oneline
+  switch = !legit switch
   branches = !legit branches
-  sprout = !legit sprout \"$@\"
-  unpublish = !legit unpublish \"$@\"
-  harvest = !legit harvest \"$@\"
-  sync = !legit sync \"$@\"
-  publish = !legit publish \"$@\"
-  graft = !legit graft \"$@\"
+  sprout = !legit sprout
+  unpublish = !legit unpublish
+  harvest = !legit harvest
+  sync = !legit sync
+  publish = !legit publish
+  graft = !legit graft
   prod = push production master
   sup = svn rebase -q
+  resync = !legit resync
 
 [core]
   excludesfile = /home/tanel/.gitignore
