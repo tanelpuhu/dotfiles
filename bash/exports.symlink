@@ -7,6 +7,10 @@ else
     export PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
 fi
 
+# No pyc files
+export PYTHONDONTWRITEBYTECODE=1
+
+
 if [[ "$(which subl)" && -z "${SSH_TTY}" ]]; then
     export EDITOR="subl -w"
 else
