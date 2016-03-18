@@ -88,3 +88,13 @@ demomode() {
     unset __DEMOMODE_PS1
   fi
 }
+
+svn() {
+  if [[ -x "${HOME}/bin/svn-${1}" ]]; then
+    cmd="${1}"
+    shift
+    ${HOME}/bin/svn-${cmd} $@
+    return
+  fi
+  command svn "$@"
+}
