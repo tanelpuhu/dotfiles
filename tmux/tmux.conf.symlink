@@ -9,7 +9,7 @@ bind-key C-a last-window
 set -g base-index 1
 
 # soften status bar color from harsh green to light gray
-set -g status-bg '#666666'
+set -g status-bg '#333333'
 set -g status-fg '#aaaaaa'
 
 set -g status-left ""
@@ -17,7 +17,6 @@ set -g status-utf8 on
 set -g status-right "%d.%m %H:%M:%S "
 set -g status-interval 1
 setw -g automatic-rename
-
 
 set -g default-terminal "screen-256color"
 

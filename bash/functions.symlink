@@ -90,11 +90,14 @@ demomode() {
 }
 
 svn() {
-  if [[ -x "${HOME}/bin/svn-${1}" ]]; then
-    cmd="${1}"
+  if [[ "$1" == 'files' ]]; then
     shift
-    ${HOME}/bin/svn-${cmd} $@
-    return
+    ~/bin/svn-files $@
+    return 1
+  elif [[ "$1" == 'eligible' ]]; then
+    shift
+    ~/bin/svn-eligible $@
+    return 1
   fi
   command svn "$@"
 }
