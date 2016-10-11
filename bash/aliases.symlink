@@ -2,6 +2,7 @@ alias ..='cd ..'
 alias -- -="cd -"
 alias c='clear'
 alias q="exit"
+alias qq="kill -9 $$"
 alias f="find . -name"
 alias h='history'
 alias s='screen -Rd'
