@@ -31,3 +31,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 else
   alias ll='ls -lStrh --color=auto'
 fi
+
+if [[ ! -x "$(which dokku)" ]]; then
+  alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+fi
