@@ -101,3 +101,20 @@ svn() {
   fi
   command svn "$@"
 }
+
+docker_gc() {
+  if [[ ! -f ${HOME}/.docker-gc-exclude ]]; then
+    touch ${HOME}/.docker-gc-exclude
+  fi
+  docker run --rm -it \
+    --name docker-gc \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v ${HOME}/.docker-gc-exclude:/etc/docker-gc-exclude:ro \
+    spotify/docker-gc
+}
+alias docker-gc='docker_gc'
+
+docker_st() {
+  docker stats --no-stream $(docker ps --format "{{ .Names}}")
+}
+alias docker-st='docker_st'

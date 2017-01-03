@@ -31,3 +31,8 @@ export HISTCONTROL=ignoreboth
 
 # Make some commands not show up in history
 #export HISTIGNORE=" *:pwd;exit:date:* --help"
+
+export NOTES_DIRECTORY=${HOME}/Dropbox/notes
+if [[ ! -d ${NOTES_DIRECTORY} ]]; then
+  mkdir -p ${NOTES_DIRECTORY}
+fi
