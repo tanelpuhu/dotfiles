@@ -25,6 +25,7 @@ alias pif="fab -f ~/bin/fabfile.py"
 alias pcip="pc curl http://icanhazip.com"
 alias ip="curl http://icanhazip.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+alias wttr="curl wttr.in/tallinn"
 
 if [[ "$(uname)" == "Darwin" ]]; then
   alias vlc='open -a vlc'
