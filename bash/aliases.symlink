@@ -1,4 +1,5 @@
 alias ..='cd ..'
+alias ...='cd ../..'
 alias -- -="cd -"
 alias c='clear'
 alias q="exit"
@@ -7,6 +8,7 @@ alias f="find . -name"
 alias h='history'
 alias s='screen -Rd'
 alias d='cd ~/Desktop/'
+alias dl="cd ~/Downloads"
 alias t='tmux attach'
 alias g='subl'
 
@@ -27,13 +29,14 @@ alias ip="curl http://icanhazip.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias wttr="curl wttr.in/tallinn"
 
+alias cc="xclip -selection clipboard"
+alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard'
+
 if [[ "$(uname)" == "Darwin" ]]; then
   alias vlc='open -a vlc'
   alias ll='ls -lhtrG'
+  alias md5sum="md5"
+  alias sha1sum="shasum"
 else
   alias ll='ls -lStrh --color=auto'
-fi
-
-if [[ ! -x "$(which dokku)" ]]; then
-  alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 fi
