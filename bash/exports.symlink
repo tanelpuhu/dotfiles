@@ -11,9 +11,7 @@ last_exit() {
 }
 
 git_branch() {
-  if [[ -d .git ]]; then
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/'
-  fi
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/'
 }
 
 _MYPROMPT="\u@\h:\w\$(last_exit)"
