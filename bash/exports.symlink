@@ -44,7 +44,7 @@ tnl_svn_repo() {
 }
 
 tnl_background_jobs() {
-  local res=$(jobs|wc -l)
+  local res=$(jobs|wc -l|tr -d ' ')
   if [[ ${res} -ne 0 ]]; then
     echo -e ":${_ORANGE}${res}${_RESET}"
   fi
