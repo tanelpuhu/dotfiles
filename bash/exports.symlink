@@ -2,20 +2,58 @@ _RESET="\033[00m"
 _RED="\033[31m"
 _GREEN="\033[32m"
 _GRAY="\033[37m"
+_ORANGE="\033[33m"
 
-last_exit() {
+
+tnl_last_exit() {
   local ec=$?
   if [[ ${ec} -ne 0 ]]; then
     echo -e ":${_RED}${ec}${_RESET}"
   fi
 }
 
-git_branch() {
+tnl_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/'
 }
 
-_MYPROMPT="\u@\h:\w\$(last_exit)"
-_MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(git_branch)\[${_RESET}\]"
+tnl_svn_repo() {
+  _svninfo() {
+    local P=$1
+    if [[ -z "$P" ]]; then
+      P=${PWD}
+    fi
+    if [[ -d ".svn" ]]; then
+      svn info --xml
+      return
+    fi
+    if [[ "${P}" != "/" ]]; then
+      cd ..
+      _svninfo ${PWD}
+      return
+    fi
+    return
+  }
+  _svninfo 2> /dev/null | python -c "if 1:
+    import sys
+    data = sys.stdin.read()
+    if '<root>' not in data:
+      sys.exit()
+    repo = data.split('<root>', 1)[-1].split('</')[0].rsplit('/', 1)[-1]
+    print('${_GREEN}:{0}${_RESET}'.format(repo))
+  "
+}
+
+tnl_background_jobs() {
+  local res=$(jobs|wc -l)
+  if [[ ${res} -ne 0 ]]; then
+    echo -e ":${_ORANGE}${res}${_RESET}"
+  fi
+}
+
+_MYPROMPT="\u@\h:\w\$(tnl_last_exit)"
+_MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_git_branch)\[${_RESET}\]"
+_MYPROMPT="${_MYPROMPT}\$(tnl_svn_repo)"
+_MYPROMPT="${_MYPROMPT}\$(tnl_background_jobs)"
 export PS1=${_MYPROMPT}'$ '
 
 # No pyc files
