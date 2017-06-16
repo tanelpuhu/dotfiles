@@ -31,8 +31,7 @@ alias ip="curl http://icanhazip.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias wttr="curl -H 'Accept-Language: et' wttr.in/tallinn"
 
-alias cc="xclip -selection clipboard"
-alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard'
+alias cwd='pwd | tr -d "\r\n" | xerox'
 
 if [[ "$(uname)" == "Darwin" ]]; then
   alias vlc='open -a vlc'
