@@ -118,3 +118,7 @@ docker_st() {
   docker stats --no-stream $(docker ps --format "{{ .Names}}")
 }
 alias docker-st='docker_st'
+
+set_term_title() {
+    printf "\e]2;%s\a" $1
+}
