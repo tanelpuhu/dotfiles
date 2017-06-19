@@ -119,6 +119,11 @@ docker_st() {
 }
 alias docker-st='docker_st'
 
+docker_ps() {
+  docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}" $@
+}
+alias docker-ps='docker_ps'
+
 set_term_title() {
     printf "\e]2;%s\a" $1
 }
