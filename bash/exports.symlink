@@ -1,9 +1,11 @@
 _RESET="\033[00m"
 _RED="\033[31m"
 _GREEN="\033[32m"
+_YELLOW="\033[33m"
+_BLUE="\033[34m"
+_MAGENTA="\033[35m"
+_CYAN="\033[36m"
 _GRAY="\033[37m"
-_ORANGE="\033[33m"
-
 
 tnl_last_exit() {
   local ec=$?
@@ -17,13 +19,14 @@ tnl_git_branch() {
 }
 
 tnl_svn_repo() {
+  local start_location=$(pwd)
   _svninfo() {
     local P=$1
     if [[ -z "$P" ]]; then
       P=${PWD}
     fi
     if [[ -d ".svn" ]]; then
-      svn info --xml
+      svn info --xml ${start_location}
       return
     fi
     if [[ "${P}" != "/" ]]; then
@@ -38,22 +41,53 @@ tnl_svn_repo() {
     data = sys.stdin.read()
     if '<root>' not in data:
       sys.exit()
+    import re
+    import os
     repo = data.split('<root>', 1)[-1].split('</')[0].rsplit('/', 1)[-1]
-    print('${_GREEN}:{0}${_RESET}'.format(repo))
+    relurl = data.split('<relative-url>', 1)[-1].split('</')[0] + '/'
+    name = location = None
+    if re.match('^\^/trunk/', relurl):
+      location = 'trunk'
+    else:
+      match = re.match('^\^/(branches|tags|releases)/(.*?\/)', relurl)
+      if match:
+        location, name = match.groups()
+        name = name.strip('/')
+    cwd = os.path.abspath(os.curdir) + '/'
+    res = []
+    for value in [repo, location, name]:
+      if value and '/{0}/'.format(value) not in cwd:
+        res.append(value)
+    if not res:
+      res = [repo]
+    print('${_GREEN}:{0}${_RESET}'.format(':'.join(res)))
   "
 }
 
 tnl_background_jobs() {
   local res=$(jobs|wc -l|tr -d ' ')
   if [[ ${res} -ne 0 ]]; then
-    echo -e ":${_ORANGE}${res}${_RESET}"
+    jobs|python -c "if 1:
+      import sys
+      data = sys.stdin.read().strip()
+      if not data:
+        sys.exit()
+      print('${_YELLOW}:{0}${_RESET}'.format(','.join([
+        x.split()[2] for x in data.splitlines()
+      ])))
+    "
   fi
 }
 
-_MYPROMPT="\u@\h:\w\$(tnl_last_exit)"
+_MYHOST="\h"
+if [[ -n "${SSH_CLIENT}" ]]; then
+  _MYHOST="${_CYAN}${_MYHOST}${_RESET}"
+fi
+
+_MYPROMPT="\u@${_MYHOST}:\w\$(tnl_last_exit)"
+_MYPROMPT="${_MYPROMPT}\$(tnl_background_jobs)"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_git_branch)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\$(tnl_svn_repo)"
-_MYPROMPT="${_MYPROMPT}\$(tnl_background_jobs)"
 export PS1=${_MYPROMPT}'$ '
 
 # No pyc files
