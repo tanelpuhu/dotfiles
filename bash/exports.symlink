@@ -10,7 +10,7 @@ _GRAY="\033[37m"
 tnl_last_exit() {
   local ec=$?
   if [[ ${ec} -ne 0 ]]; then
-    echo -e ":${_RED}${ec}${_RESET}"
+    echo -n ":${ec}"
   fi
 }
 
@@ -60,7 +60,7 @@ tnl_svn_repo() {
         res.append(value)
     if not res:
       res = [repo]
-    print('${_GREEN}:{0}${_RESET}'.format(':'.join(res)))
+    print(':{0}'.format(':'.join(res)))
   "
 }
 
@@ -72,7 +72,7 @@ tnl_background_jobs() {
       data = sys.stdin.read().strip()
       if not data:
         sys.exit()
-      print('${_YELLOW}:{0}${_RESET}'.format(','.join([
+      print(':{0}'.format(','.join([
         x.split()[2] for x in data.splitlines()
       ])))
     "
@@ -84,10 +84,10 @@ if [[ -n "${SSH_CLIENT}" ]]; then
   _MYHOST="${_CYAN}${_MYHOST}${_RESET}"
 fi
 
-_MYPROMPT="\u@${_MYHOST}:\w\$(tnl_last_exit)"
-_MYPROMPT="${_MYPROMPT}\$(tnl_background_jobs)"
+_MYPROMPT="\u@${_MYHOST}:\w\[${_RED}\]\$(tnl_last_exit)\[${_RESET}\]"
+_MYPROMPT="${_MYPROMPT}\[${_YELLOW}\]\$(tnl_background_jobs)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_git_branch)\[${_RESET}\]"
-_MYPROMPT="${_MYPROMPT}\$(tnl_svn_repo)"
+_MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_svn_repo)\[${_RESET}\]"
 export PS1=${_MYPROMPT}'$ '
 
 # No pyc files
