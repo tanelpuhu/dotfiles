@@ -93,11 +93,13 @@ export PS1=${_MYPROMPT}'$ '
 # No pyc files
 export PYTHONDONTWRITEBYTECODE=1
 
-
+# Sublime text if not over SSH, nvim or vim as last resort.
 if [[ "$(which subl)" && -z "${SSH_TTY}" ]]; then
-    export EDITOR="subl -w"
+  export EDITOR="subl -w"
+elif [[ $(which nvim) ]]; then
+  export EDITOR=nvim
 else
-    export EDITOR=vim
+  export EDITOR=vim
 fi
 
 export GIT_EDITOR=${EDITOR}
@@ -110,11 +112,11 @@ export MANPAGER="less -X"
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
+
+# Skip duplicates and commands with start with space
 export HISTCONTROL=ignoreboth
 
-# Make some commands not show up in history
-#export HISTIGNORE=" *:pwd;exit:date:* --help"
-
+# Notes
 if [[ -d ${HOME}/Dropbox ]]; then
   export NOTES_DIRECTORY=${HOME}/Dropbox/notes
   if [[ ! -d ${NOTES_DIRECTORY} ]]; then
