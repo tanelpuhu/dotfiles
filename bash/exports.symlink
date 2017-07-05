@@ -81,14 +81,14 @@ tnl_background_jobs() {
 
 _MYHOST="\h"
 if [[ -n "${SSH_CLIENT}" ]]; then
-  _MYHOST="${_CYAN}${_MYHOST}${_RESET}"
+  _MYHOST="\[${_CYAN}\]${_MYHOST}\[${_RESET}\]"
 fi
 
 _MYPROMPT="\u@${_MYHOST}:\w\[${_RED}\]\$(tnl_last_exit)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_YELLOW}\]\$(tnl_background_jobs)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_git_branch)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_svn_repo)\[${_RESET}\]"
-export PS1=${_MYPROMPT}'$ '
+export PS1=${_MYPROMPT}'\$ '
 
 # No pyc files
 export PYTHONDONTWRITEBYTECODE=1
