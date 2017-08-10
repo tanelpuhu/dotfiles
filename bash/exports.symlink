@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 _RESET="\033[00m"
 _RED="\033[31m"
 _GREEN="\033[32m"
@@ -123,3 +125,18 @@ if [[ -d ${HOME}/Dropbox ]]; then
     mkdir -p ${NOTES_DIRECTORY}
   fi
 fi
+
+# Localisation
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# AWS
+export AWS_DEFAULT_REGION="eu-central-1"
+export BOTO_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+
+# GO
+export GOPATH=${HOME}/.go
+export PATH=${PATH}:${HOME}/.go/bin
+
+# Terminal
+export TERM=xterm-256color
