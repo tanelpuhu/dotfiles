@@ -92,11 +92,15 @@ demomode() {
 svn() {
   if [[ "$1" == 'files' ]]; then
     shift
-    ~/bin/svn-files $@
+    ~/bin/wurx/svn-files $@
     return 1
   elif [[ "$1" == 'eligible' ]]; then
     shift
-    ~/bin/svn-eligible $@
+    ~/bin/wurx/svn-eligible $@
+    return 1
+  elif [[ "$1" == 'stash' ]]; then
+    shift
+    ~/bin/wurx/svn-stash $@
     return 1
   fi
   command svn "$@"

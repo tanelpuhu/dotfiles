@@ -44,3 +44,5 @@
   noconsole = yes
 [push]
   default = current
+[gui]
+	tabsize = 4
