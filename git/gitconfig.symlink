@@ -16,17 +16,16 @@
   co = checkout
   di = diff
   lol = log --graph --decorate --oneline
-  switch = !legit switch
-  branches = !legit branches
-  sprout = !legit sprout
-  unpublish = !legit unpublish
-  harvest = !legit harvest
-  sync = !legit sync
-  publish = !legit publish
-  graft = !legit graft
+  sha = rev-parse HEAD
   prod = push production master
   sup = svn rebase -q
+  branches = !legit branches
+  publish = !legit publish
+  unpublish = !legit unpublish
+  sync = !legit sync
+  switch = !legit switch
   resync = !legit resync
+  undo = !legit undo
 
 [core]
   excludesfile = /home/tanel/.gitignore
@@ -42,7 +41,9 @@
 [guitool "Sublime"]
   cmd = subl $FILENAME
   noconsole = yes
+
 [push]
   default = current
+
 [gui]
-	tabsize = 4
+  tabsize = 4
