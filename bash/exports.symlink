@@ -38,7 +38,7 @@ tnl_svn_repo() {
     fi
     return
   }
-  _svninfo 2> /dev/null | python -c "if 1:
+  _svninfo 2> /dev/null | python -sSc "if 1:
     import sys
     data = sys.stdin.read()
     if '<root>' not in data:
@@ -69,7 +69,7 @@ tnl_svn_repo() {
 tnl_background_jobs() {
   local res=$(jobs|wc -l|tr -d ' ')
   if [[ ${res} -ne 0 ]]; then
-    jobs|python -c "if 1:
+    jobs|python -sSc "if 1:
       import sys
       data = sys.stdin.read().strip()
       if not data:
