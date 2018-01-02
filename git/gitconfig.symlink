@@ -16,6 +16,7 @@
   co = checkout
   di = diff
   lol = log --graph --decorate --oneline
+  lov = !git show $(git log $@ --format=oneline |awk '{print $1}')
   sha = rev-parse HEAD
   prod = push production master
   sup = svn rebase -q
