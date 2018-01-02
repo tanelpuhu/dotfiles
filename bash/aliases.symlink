@@ -36,6 +36,8 @@ alias wttr="curl -H 'Accept-Language: et' wttr.in/tallinn"
 
 alias cwd='pwd | tr -d "\r\n" | xerox'
 
+alias russian-roulette='[ $[ $RANDOM % 6 ] == 0 ] && echo Bang || echo Click'
+
 if [[ "$(uname)" == "Darwin" ]]; then
   alias vlc='open -a vlc'
   alias ll='ls -lhtrG'
