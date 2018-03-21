@@ -9,6 +9,12 @@ _MAGENTA="\033[35m"
 _CYAN="\033[36m"
 _GRAY="\033[37m"
 
+# GO
+export GOPATH=${HOME}/src/go
+if [[ -d "${GOPATH}" ]]; then
+  export PATH=${PATH}:${GOPATH}/bin
+fi
+
 tnl_last_exit() {
   local ec=$?
   if [[ ${ec} -ne 0 ]]; then
@@ -21,49 +27,10 @@ tnl_git_branch() {
 }
 
 tnl_svn_repo() {
-  local start_location=$(pwd)
-  _svninfo() {
-    local P=$1
-    if [[ -z "$P" ]]; then
-      P=${PWD}
-    fi
-    if [[ -d ".svn" ]]; then
-      svn info --xml ${start_location}
-      return
-    fi
-    if [[ "${P}" != "/" ]]; then
-      cd ..
-      _svninfo ${PWD}
-      return
-    fi
-    return
-  }
-  _svninfo 2> /dev/null | python -sSc "if 1:
-    import sys
-    data = sys.stdin.read()
-    if '<root>' not in data:
-      sys.exit()
-    import re
-    import os
-    repo = data.split('<root>', 1)[-1].split('</')[0].rsplit('/', 1)[-1]
-    relurl = data.split('<relative-url>', 1)[-1].split('</')[0] + '/'
-    name = location = None
-    if re.match('^\^/trunk/', relurl):
-      location = 'trunk'
-    else:
-      match = re.match('^\^/(branches|tags|releases)/(.*?\/)', relurl)
-      if match:
-        location, name = match.groups()
-        name = name.strip('/')
-    cwd = os.path.abspath(os.curdir) + '/'
-    res = []
-    for value in [repo, location, name]:
-      if value and '/{0}/'.format(value) not in cwd:
-        res.append(value)
-    if not res:
-      res = [repo]
-    print(':{0}'.format(':'.join(res)))
-  "
+  # go get -u github.com/tanelpuhu/svn-info-xml-to-ps1
+  if [[ -x ${GOPATH}/bin/svn-info-xml-to-ps1 ]]; then
+    svn info --xml 2> /dev/null | ${GOPATH}/bin/svn-info-xml-to-ps1
+  fi
 }
 
 tnl_background_jobs() {
@@ -135,12 +102,6 @@ export LC_ALL=en_US.UTF-8
 # AWS
 export AWS_DEFAULT_REGION="eu-central-1"
 export BOTO_DEFAULT_REGION=${AWS_DEFAULT_REGION}
-
-# GO
-export GOPATH=${HOME}/src/go
-if [[ -d "${GOPATH}" ]]; then
-  export PATH=${PATH}:${GOPATH}/bin
-fi
 
 # Terminal
 export TERM=xterm-256color
