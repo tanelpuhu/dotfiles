@@ -15,10 +15,12 @@
   ci = commit
   co = checkout
   di = diff
+  fa = fetch --all -v --prune
   lol = log --graph --decorate --oneline
   sha = rev-parse HEAD
   prod = push production master
   sup = svn rebase -q
+  amend = commit --amend --reuse-message=HEAD
   branches = !legit branches
   publish = !legit publish
   unpublish = !legit unpublish
