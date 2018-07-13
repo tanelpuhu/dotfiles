@@ -35,6 +35,10 @@ link_files () {
 install_dotfiles () {
   info 'installing dotfiles'
 
+  go get github.com/tanelpuhu/jobs-info-to-ps1
+  go get github.com/tanelpuhu/gcer
+  go get github.com/tanelpuhu/svn-info-xml-to-ps1
+
   overwrite_all=false
   backup_all=false
   skip_all=false
