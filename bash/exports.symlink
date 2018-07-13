@@ -34,18 +34,7 @@ tnl_svn_repo() {
 }
 
 tnl_background_jobs() {
-  local res=$(jobs|wc -l|tr -d ' ')
-  if [[ ${res} -ne 0 ]]; then
-    jobs|python -sSc "if 1:
-      import sys
-      data = sys.stdin.read().strip()
-      if not data:
-        sys.exit()
-      print(':{0}'.format(','.join([
-        x.split()[2] for x in data.splitlines()
-      ])))
-    "
-  fi
+  jobs -p | jobs-info-to-ps1
 }
 
 _MYHOST="\h"
