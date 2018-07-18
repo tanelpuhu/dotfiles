@@ -34,7 +34,7 @@ tnl_svn_repo() {
 }
 
 tnl_background_jobs() {
-  jobs -p | jobs-info-to-ps1
+  jobs -p -r | jobs-info-to-ps1
 }
 
 _MYHOST="\h"
