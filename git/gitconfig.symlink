@@ -49,3 +49,6 @@
 
 [gui]
   tabsize = 4
+
+[rerere]
+  enabled = 1

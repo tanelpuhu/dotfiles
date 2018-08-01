@@ -8,6 +8,7 @@ _BLUE="\033[34m"
 _MAGENTA="\033[35m"
 _CYAN="\033[36m"
 _GRAY="\033[37m"
+_DARKORANGEISH="\033[2;33m"
 
 # GO
 export GOPATH=${HOME}/src/go
@@ -34,7 +35,18 @@ tnl_svn_repo() {
 }
 
 tnl_background_jobs() {
-  jobs -p -r | jobs-info-to-ps1
+  if [[ -x $GOPATH/bin/jobs-info-to-ps1 ]]; then
+    jobs -p -r | jobs-info-to-ps1
+  fi
+}
+
+tnl_weather() {
+  if [[ -x $GOPATH/bin/ilmateenistus ]]; then
+      local output=$($GOPATH/bin/ilmateenistus -n -w 26038 -t 20m31s)
+      if [[ -n "$output" ]]; then
+        echo ":${output}"
+      fi
+    fi
 }
 
 _MYHOST="\h"
@@ -43,6 +55,7 @@ if [[ -n "${SSH_CLIENT}" ]]; then
 fi
 
 _MYPROMPT="\u@${_MYHOST}:\w\[${_RED}\]\$(tnl_last_exit)\[${_RESET}\]"
+_MYPROMPT="${_MYPROMPT}\[${_DARKORANGEISH}\]\$(tnl_weather)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_YELLOW}\]\$(tnl_background_jobs)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_git_branch)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_svn_repo)\[${_RESET}\]"
