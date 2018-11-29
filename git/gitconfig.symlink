@@ -17,7 +17,7 @@
   cc = !git add -p && . ~/bin/tools/gitdate && git ci -v
   co = checkout
   di = diff
-  fa = fetch --all -v --prune
+  fa = fetch --all --prune
   lol = log --graph --decorate --oneline
   sha = rev-parse HEAD
   prod = push production master
