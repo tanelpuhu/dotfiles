@@ -31,12 +31,13 @@ alias pif="fab -f ~/bin/fabfile.py"
 
 alias pcip="pc curl http://icanhazip.com"
 alias ip="curl http://icanhazip.com"
-alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+alias ips="ifconfig -a|\grep -E '\d*\.\d*\.\d*\.\d*'"
 alias wttr="curl -H 'Accept-Language: et' wttr.in/tallinn"
 
 alias cwd='pwd | tr -d "\r\n" | xerox'
 
-alias russian-roulette='[ $[ $RANDOM % 6 ] == 0 ] && echo Bang || echo Click'
+alias rmdsstore='find . -type f -name .DS_Store -print -delete'
+alias rmpyc='find . -type f -name "*.pyc" -print -delete'
 
 if [[ "$(uname)" == "Darwin" ]]; then
   alias vlc='open -a vlc'

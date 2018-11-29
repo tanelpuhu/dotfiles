@@ -1,6 +1,7 @@
 [user]
   name = Tanel Puhu
   email = tanel@tanelpuhu.com
+  signingkey = CCB0751E97A6299881403FA118FD1DED30F6CF4A
 
 [color]
   ui = true
@@ -13,6 +14,7 @@
   st = status
   br = branch
   ci = commit
+  cc = !git add -p && . ~/bin/tools/gitdate && git ci -v
   co = checkout
   di = diff
   fa = fetch --all -v --prune
@@ -20,6 +22,7 @@
   sha = rev-parse HEAD
   prod = push production master
   sup = svn rebase -q
+  rup = !git fetch upstream && git rebase upstream/master
   amend = commit --amend --reuse-message=HEAD
   branches = !legit branches
   publish = !legit publish
@@ -52,3 +55,9 @@
 
 [rerere]
   enabled = 1
+
+[gpg]
+  program = /usr/local/bin/gpg
+
+[commit]
+  gpgsign = false
