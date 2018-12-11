@@ -6,10 +6,10 @@ for file in ~/.{extra,paths,aliases,functions,exports}; do
 done
 
 for file in /etc/bash_completion \
+            /usr/local/etc/bash_completion \
             ~/bin/.bash_completion \
             ~/bin/.bash_completion_generated \
             ~/.git-completion.bash \
-            /usr/local/etc/bash_completion \
 ; do
   [ -r "$file" ] && . "$file"
 done
