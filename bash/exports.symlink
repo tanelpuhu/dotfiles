@@ -55,7 +55,7 @@ if [[ -n "${SSH_CLIENT}" ]]; then
 fi
 
 _MYPROMPT="\u@${_MYHOST}:\w\[${_RED}\]\$(tnl_last_exit)\[${_RESET}\]"
-_MYPROMPT="${_MYPROMPT}\[${_DARKORANGEISH}\]\$(tnl_weather)\[${_RESET}\]"
+# _MYPROMPT="${_MYPROMPT}\[${_DARKORANGEISH}\]\$(tnl_weather)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_YELLOW}\]\$(tnl_background_jobs)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_git_branch)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_svn_repo)\[${_RESET}\]"

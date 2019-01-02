@@ -119,7 +119,7 @@ docker_gc() {
 alias docker-gc='docker_gc'
 
 docker_st() {
-  docker stats --no-stream $(docker ps --format "{{ .Names}}")
+  docker stats --no-stream
 }
 alias docker-st='docker_st'
 
