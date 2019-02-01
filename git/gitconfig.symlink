@@ -14,7 +14,6 @@
   st = status
   br = branch
   ci = commit
-  cc = !git add -p && . ~/bin/tools/gitdate && git ci -v
   co = checkout
   di = diff
   fa = fetch --all --prune
