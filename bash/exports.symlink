@@ -40,22 +40,12 @@ tnl_background_jobs() {
   fi
 }
 
-tnl_weather() {
-  if [[ -x $GOPATH/bin/ilmateenistus ]]; then
-      local output=$($GOPATH/bin/ilmateenistus -n -w 26038 -t 20m31s)
-      if [[ -n "$output" ]]; then
-        echo ":${output}"
-      fi
-    fi
-}
-
 _MYHOST="\h"
 if [[ -n "${SSH_CLIENT}" ]]; then
   _MYHOST="\[${_CYAN}\]${_MYHOST}\[${_RESET}\]"
 fi
 
 _MYPROMPT="\u@${_MYHOST}:\w\[${_RED}\]\$(tnl_last_exit)\[${_RESET}\]"
-# _MYPROMPT="${_MYPROMPT}\[${_DARKORANGEISH}\]\$(tnl_weather)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_YELLOW}\]\$(tnl_background_jobs)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_git_branch)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_svn_repo)\[${_RESET}\]"
