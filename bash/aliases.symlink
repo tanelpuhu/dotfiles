@@ -28,7 +28,6 @@ alias minio='s3cmd --config ~/.minio'
 alias lock="xtrlock"
 alias pif="fab -f ~/bin/fabfile.py"
 
-alias ip="curl http://icanhazip.com"
 alias ips="ifconfig -a|\grep -E '\d*\.\d*\.\d*\.\d*'"
 alias wttr="curl -H 'Accept-Language: et' wttr.in/tallinn"
 
