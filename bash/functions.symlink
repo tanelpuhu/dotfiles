@@ -102,6 +102,10 @@ svn() {
     shift
     ~/bin/wurx/svn-stash $@
     return 1
+  elif [[ "$1" == 'show' ]]; then
+    shift
+    ~/bin/wurx/svn-show $@
+    return 1
   fi
   command svn "$@"
 }

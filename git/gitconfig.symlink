@@ -19,7 +19,7 @@
   fa = fetch --all --prune
   lol = log --graph --decorate --oneline
   sha = rev-parse HEAD
-  prod = push production master
+  prod = push production
   sup = svn rebase -q
   rup = !git rebase upstream/$(git rev-parse --abbrev-ref HEAD)
   amend = commit --amend --reuse-message=HEAD
