@@ -23,13 +23,6 @@
   sup = svn rebase -q
   rup = !git rebase upstream/$(git rev-parse --abbrev-ref HEAD)
   amend = commit --amend --reuse-message=HEAD
-  branches = !legit branches
-  publish = !legit publish
-  unpublish = !legit unpublish
-  sync = !legit sync
-  switch = !legit switch
-  resync = !legit resync
-  undo = !legit undo
 
 [core]
   excludesfile = /home/tanel/.gitignore
