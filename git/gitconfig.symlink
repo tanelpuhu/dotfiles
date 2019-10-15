@@ -15,7 +15,7 @@
   br = branch
   ci = commit
   co = checkout
-  di = diff
+  di = diff --relative
   fa = fetch --all --prune
   lol = log --graph --decorate --oneline
   sha = rev-parse HEAD
