@@ -23,6 +23,7 @@
   sup = svn rebase -q
   rup = !git rebase upstream/$(git rev-parse --abbrev-ref HEAD)
   amend = commit --amend --reuse-message=HEAD
+  delete = branch -D
 
 [core]
   excludesfile = /home/tanel/.gitignore
