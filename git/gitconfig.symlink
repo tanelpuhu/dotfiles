@@ -11,7 +11,8 @@
   status = auto
 
 [alias]
-  st = status
+  a = add -p
+  st = status -bs
   br = branch
   ci = commit
   co = checkout
