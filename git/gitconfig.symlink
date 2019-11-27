@@ -10,6 +10,9 @@
   interactive = auto
   status = auto
 
+[include]
+  path = .gitconfig.private
+
 [alias]
   a = add -p
   st = status -bs

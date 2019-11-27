@@ -20,7 +20,8 @@ alias up='svn up'
 
 alias sudo='sudo '
 
-alias grep='grep --exclude-dir=.git --exclude-dir=.svn --color=auto'
+# alias grep='grep --exclude-dir=.git --exclude-dir=.svn --color=auto'
+alias grep=ack
 
 alias pyserv='python -m SimpleHTTPServer 8080'
 alias minio='s3cmd --config ~/.minio'
