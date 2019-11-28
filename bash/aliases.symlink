@@ -17,6 +17,7 @@ alias g='subl'
 
 alias df='df -h'
 alias up='svn up'
+alias le='mutt -f /var/mail/tanel'
 
 alias sudo='sudo '
 
