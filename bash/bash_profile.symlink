@@ -10,6 +10,9 @@ for file in /etc/bash_completion \
             ~/bin/.bash_completion \
             ~/bin/.bash_completion_generated \
             ~/.git-completion.bash \
+            ~/src/google-cloud-sdk/path.bash.inc \
+            ~/src/google-cloud-sdk/completion.bash.inc \
+            /google/devshell/bashrc.google \
 ; do
   [ -r "$file" ] && . "$file"
 done

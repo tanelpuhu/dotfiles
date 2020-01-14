@@ -17,7 +17,6 @@ alias g='subl'
 
 alias df='df -h'
 alias up='svn up'
-alias le='mutt -f /var/mail/tanel'
 
 alias sudo='sudo '
 
@@ -48,7 +47,17 @@ else
 fi
 
 # Neovim
-which nvim &> /dev/null
+command -v nvim &> /dev/null && alias vi=nvim
+
+# Neomutt
+command -v neomutt &> /dev/null
 if [[ $? -eq 0 ]]; then
-  alias vi=nvim
+  alias le='neomutt -f /var/mail/tanel'
+  alias gmail='neomutt -F ~/.muttrc.gmail'
+else
+  alias le='oldmutt -f /var/mail/tanel'
+  alias gmail='oldmutt -F ~/.muttrc.gmail'
 fi
+
+alias docker-st='docker stats --no-stream'
+alias docker-ps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Names}}\t{{.Status}}"'

@@ -55,11 +55,9 @@ export PS1=${_MYPROMPT}'\$ '
 export PYTHONDONTWRITEBYTECODE=1
 
 # Sublime text if not over SSH, nvim or vim as last resort.
-
-
-if [[ "$(which subl 2>/dev/null)" && -z "${SSH_TTY}" ]]; then
+if [[ "$(command -v subl 2>/dev/null)" && -z "${SSH_TTY}" ]]; then
   export EDITOR="subl -w"
-elif [[ $(which nvim 2>/dev/null) ]]; then
+elif [[ $(command -v nvim 2>/dev/null) ]]; then
   export EDITOR=nvim
 else
   export EDITOR=vim

@@ -3,15 +3,6 @@
   echo "$*" | bc -l;
 } # $ ? 1337 - 1295   => 42
 
-blame(){
-  if [[ "$1" == "-n" ]]; then
-    shift
-    svn blame $@ | sort -nr | less -XF
-  else
-    svn blame $@ | less -XF
-  fi
-}
-
 svnlog(){
   svn log -vl 50 $@ | less -XF
 }
@@ -20,40 +11,9 @@ svndi(){
   svn di -x -U5 --diff-cmd=diff $@ | colordiff | less -RXF
 }
 
-changset(){
-  svn log --diff -vr $@ | colordiff | less -RXF
-}
-
-lint(){
-  pylint $@ | less -XF
-}
-
-ttail(){
-  if [[ -z "$1" ]]; then
-    while read; do
-      echo -e "$(date +%T.%N) $REPLY";
-    done
-  else
-    tail -f $@ | while read; do echo -e "$(date +%T.%N) $REPLY"; done
-  fi
-}
-
-tpipe(){
-  while read; do
-    echo -e "$(date +%T.%N) $REPLY";
-  done
-}
-
-mktar() {
-  tar cvf  "${1%%/}.tar" "${1%%/}/";
-}
 
 mktgz() {
   tar cvzf "${1%%/}.tgz" "${1%%/}/";
-}
-
-gw() {
-  grep -rw $@
 }
 
 fsub(){
@@ -61,21 +21,18 @@ fsub(){
 }
 
 venv () {
-  local DIRECTORY=${HOME}/src/venv
-  if [[ ! -d "${DIRECTORY}" ]]; then
-    echo "creating directory: ${DIRECTORY}..."
-    mkdir -p ${DIRECTORY}
+  local DIRECTORY=~/src/venv
+  mkdir -p ${DIRECTORY}
+  local name=$1
+  if [[ -z "$name" ]]; then
+    echo "usage: venv <name> [options]"
+    return
   fi
-
-  if [[ "$1" ]]; then
-    DIRECTORY="${DIRECTORY}/$1"
-    if [[ ! -d "${DIRECTORY}" ]]; then
-        virtualenv ${DIRECTORY}
-    fi
-    . ${DIRECTORY}/bin/activate
-  else
-    echo "Specify virtualenv name!"
+  shift
+  if [[ ! -f ${DIRECTORY}/${name}/bin/activate ]]; then
+    virtualenv $@ ${DIRECTORY}/${name}
   fi
+  source ${DIRECTORY}/${name}/bin/activate
 }
 
 demomode() {
@@ -87,51 +44,4 @@ demomode() {
     export PS1="${__DEMOMODE_PS1}"
     unset __DEMOMODE_PS1
   fi
-}
-
-svn() {
-  if [[ "$1" == 'files' ]]; then
-    shift
-    ~/bin/wurx/svn-files $@
-    return 1
-  elif [[ "$1" == 'eligible' ]]; then
-    shift
-    ~/bin/wurx/svn-eligible $@
-    return 1
-  elif [[ "$1" == 'stash' ]]; then
-    shift
-    ~/bin/wurx/svn-stash $@
-    return 1
-  elif [[ "$1" == 'show' ]]; then
-    shift
-    ~/bin/wurx/svn-show $@
-    return 1
-  fi
-  command svn "$@"
-}
-
-docker_gc() {
-  if [[ ! -f ${HOME}/.docker-gc-exclude ]]; then
-    touch ${HOME}/.docker-gc-exclude
-  fi
-  docker run --rm -it \
-    --name docker-gc \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v ${HOME}/.docker-gc-exclude:/etc/docker-gc-exclude:ro \
-    spotify/docker-gc
-}
-alias docker-gc='docker_gc'
-
-docker_st() {
-  docker stats --no-stream
-}
-alias docker-st='docker_st'
-
-docker_ps() {
-  docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}" $@
-}
-alias docker-ps='docker_ps'
-
-set_term_title() {
-    printf "\e]2;%s\a" $1
 }
