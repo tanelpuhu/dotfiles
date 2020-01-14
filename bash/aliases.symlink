@@ -55,8 +55,8 @@ if [[ $? -eq 0 ]]; then
   alias le='neomutt -f /var/mail/tanel'
   alias gmail='neomutt -F ~/.muttrc.gmail'
 else
-  alias le='oldmutt -f /var/mail/tanel'
-  alias gmail='oldmutt -F ~/.muttrc.gmail'
+  alias le='mutt -f /var/mail/tanel'
+  alias gmail='mutt -F ~/.muttrc.gmail'
 fi
 
 alias docker-st='docker stats --no-stream'
