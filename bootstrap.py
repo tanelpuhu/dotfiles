@@ -38,7 +38,7 @@ def main():
         elif os.path.islink(dest):
             print('{dest} is link but not to {source}... skipping...'.format(dest=dest, source=source))
         elif os.path.exists(dest):
-            print('{dest} exists is not linkt to {source}... skipping...'.format(dest=dest, source=source))
+            print('{dest} exists and is not linked to {source}... skipping...'.format(dest=dest, source=source))
         else:
             print('link {source} -> {dest}'.format(dest=dest, source=source))
             os.symlink(source, dest)

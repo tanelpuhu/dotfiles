@@ -4,13 +4,11 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -="cd -"
 alias c='clear'
-alias q="exit"
-alias qq="kill -9 $$"
-alias f="find . -name"
-alias h='history'
+alias q='exit'
+alias qq='kill -9 $$'
+alias f='find . -name'
 alias s='screen -Rd'
-alias d='cd ~/Desktop/'
-alias dl="cd ~/Downloads"
+alias dl='cd ~/Downloads'
 alias tmux='tmux -2'
 alias t='tmux -2 attach'
 alias g='subl'
@@ -25,10 +23,6 @@ command -v ack &> /dev/null && alias grep=ack || alias grep='grep --exclude-dir=
 alias pyserv='python -m SimpleHTTPServer 8080'
 alias minio='s3cmd --config ~/.minio'
 
-alias lock="xtrlock"
-alias pif="fab -f ~/bin/fabfile.py"
-
-alias ips="ifconfig -a|\grep -E '\d*\.\d*\.\d*\.\d*'"
 alias wttr="curl -H 'Accept-Language: et' wttr.in/tallinn"
 
 alias cwd='pwd | tr -d "\r\n" | xerox'
