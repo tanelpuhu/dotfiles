@@ -18,3 +18,6 @@ for file in /etc/bash_completion \
 done
 
 unset file
+
+# complete taskfile (https://taskfile.dev)
+complete -W "\`test -e Taskfile.yml && \grep -oE '^\s\s[a-z0-9_-]+:([^=]|$)' Taskfile.yml | sed 's/[^a-zA-Z0-9_-]*$//'\`" task
