@@ -45,10 +45,10 @@ command -v nvim &> /dev/null && alias vi=nvim
 # Neomutt
 command -v neomutt &> /dev/null
 if [[ $? -eq 0 ]]; then
-  alias le='neomutt -f /var/mail/tanel'
+  alias le='neomutt -f /var/mail/$USER'
   alias gmail='neomutt -F ~/.muttrc.gmail'
 else
-  alias le='mutt -f /var/mail/tanel'
+  alias le='mutt -f /var/mail/$USER'
   alias gmail='mutt -F ~/.muttrc.gmail'
 fi
 
