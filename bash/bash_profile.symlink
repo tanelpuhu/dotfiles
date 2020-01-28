@@ -5,14 +5,14 @@ for file in ~/.{extra,paths,aliases,functions,exports}; do
   [ -r "$file" ] && . "$file"
 done
 
-for file in /etc/bash_completion \
-            /usr/local/etc/bash_completion \
+for file in ~/.git-completion.bash \
             ~/bin/.bash_completion \
             ~/bin/.bash_completion_generated \
-            ~/.git-completion.bash \
             ~/src/google-cloud-sdk/path.bash.inc \
             ~/src/google-cloud-sdk/completion.bash.inc \
             /google/devshell/bashrc.google \
+            /etc/bash_completion \
+            /usr/local/etc/bash_completion \
 ; do
   [ -r "$file" ] && . "$file"
 done
