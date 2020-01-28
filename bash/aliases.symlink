@@ -20,7 +20,7 @@ alias sudo='sudo '
 
 command -v ack &> /dev/null && alias grep=ack || alias grep='grep --exclude-dir=.git --exclude-dir=.svn --color=auto'
 
-alias pyserv='python -m SimpleHTTPServer 8080'
+alias pyserv='python3 -m http.server'
 alias minio='s3cmd --config ~/.minio'
 
 alias wttr="curl -H 'Accept-Language: et' wttr.in/tallinn"
