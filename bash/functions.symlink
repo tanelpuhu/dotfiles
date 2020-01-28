@@ -45,3 +45,26 @@ demomode() {
     unset __DEMOMODE_PS1
   fi
 }
+
+transmission-remote() {
+  if [[ "$@" == "" ]]; then
+    transmission-remote -l|grep -wv Idle|grep -wv Finished
+  else
+    docker run --rm \
+               --volume ${HOME}/.netrc:/home/user/.netrc:ro \
+               --name transmission \
+               tanel/transmission-remote \
+               ${TRANSMISSION_URL} \
+               --netrc /home/user/.netrc \
+               --ssl \
+               $@
+  fi
+}
+
+tor-proxy(){
+  docker run --detach \
+             --restart always \
+             --publish 127.0.0.1:9050:9050 \
+             --name torproxy \
+             tanel/tor-proxy
+}
