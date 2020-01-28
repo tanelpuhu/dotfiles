@@ -53,6 +53,7 @@ def main():
         if go:
             go_get(go, 'github.com/tanelpuhu/jobs-info-to-ps1')
             go_get(go, 'github.com/tanelpuhu/svn-info-xml-to-ps1')
+            go_get(go, 'github.com/tanelpuhu/xerox')
 
     print('done, you only need to run this now: source ~/.bash_profile')
 

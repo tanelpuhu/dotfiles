@@ -54,3 +54,6 @@ fi
 
 alias docker-st='docker stats --no-stream'
 alias docker-ps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Names}}\t{{.Status}}"'
+alias alpine='docker run --rm -it tanel/alpine:latest sh'
+
+alias pubkey="xerox < ~/.ssh/id_ed25519.pub && echo '=> Public key xeroxed'"
