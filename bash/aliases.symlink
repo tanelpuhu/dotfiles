@@ -57,3 +57,4 @@ alias docker-ps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.N
 alias alpine='docker run --rm -it tanel/alpine:latest sh'
 
 alias pubkey="xerox < ~/.ssh/id_ed25519.pub && echo '=> Public key xeroxed'"
+alias sr='curl -X POST -H X-API-Key:$SYNCTHING_TOKEN http://127.0.0.1:8384/rest/db/scan'
