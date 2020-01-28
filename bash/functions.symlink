@@ -68,3 +68,13 @@ tor-proxy(){
              --name torproxy \
              tanel/tor-proxy
 }
+
+function go-status() {
+  START=$PWD
+  for p in $(find ${GOPATH}/src/gitlab.com/tanel ${GOPATH}/src/github.com/tanelpuhu  -maxdepth 2 -type d -name .git); do
+    cd $p/..
+    pwd
+    git status -bs
+  done
+  cd $START
+}
