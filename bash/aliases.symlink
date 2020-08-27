@@ -19,6 +19,8 @@ alias up='svn up'
 alias sudo='sudo '
 
 command -v ack &> /dev/null && alias grep=ack || alias grep='grep --exclude-dir=.git --exclude-dir=.svn --color=auto'
+command -v ag &> /dev/null && alias ag="ag --color-match '1;31;49'"
+
 
 alias pyserv='python3 -m http.server'
 alias minio='s3cmd --config ~/.minio'

@@ -45,6 +45,9 @@
   cmd = subl $FILENAME
   noconsole = yes
 
+[pull]
+  ff = only
+
 [push]
   default = current
 
