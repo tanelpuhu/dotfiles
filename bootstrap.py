@@ -54,6 +54,7 @@ def main():
             go_get(go, 'github.com/tanelpuhu/jobs-info-to-ps1')
             go_get(go, 'github.com/tanelpuhu/svn-info-xml-to-ps1')
             go_get(go, 'github.com/tanelpuhu/xerox')
+            go_get(go, 'lusikas.com/2fa')
 
     print('done, you only need to run this now: source ~/.bash_profile')
 
