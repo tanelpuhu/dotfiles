@@ -15,6 +15,7 @@
 
 [alias]
   a = add -p
+  p = log -p
   st = status -bs
   br = branch
   ci = commit
