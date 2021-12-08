@@ -14,7 +14,7 @@ set -g status-fg '#aaaaaa'
 
 set -g status-left " "
 set -g status-right "#(panelscripts -all)%H:%M %m.%d "
-set -g status-right-length 80
+set -g status-right-length 120
 set -g status-interval 5
 
 setw -g automatic-rename
