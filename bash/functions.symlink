@@ -15,13 +15,12 @@ svn-diff-so-fancy(){
   svn di $@ | diff-so-fancy | less --tabs=4 -RXF
 }
 
-
 mktgz() {
   tar cvzf "${1%%/}.tgz" "${1%%/}/";
 }
 
-fsub(){
-  find . -name $@ | xargs subl
+cheat() {
+  curl "https://cheat.sh/$*"
 }
 
 venv () {
@@ -48,37 +47,4 @@ demomode() {
     export PS1="${__DEMOMODE_PS1}"
     unset __DEMOMODE_PS1
   fi
-}
-
-transmission-remote() {
-  if [[ "$@" == "" ]]; then
-    transmission-remote -l|grep -wv Idle|grep -wv Finished
-  else
-    docker run --rm \
-               --volume ${HOME}/.netrc:/home/user/.netrc:ro \
-               --name transmission \
-               tanel/transmission-remote \
-               ${TRANSMISSION_URL} \
-               --netrc /home/user/.netrc \
-               --ssl \
-               $@
-  fi
-}
-
-tor-proxy(){
-  docker run --detach \
-             --restart always \
-             --publish 127.0.0.1:9050:9050 \
-             --name torproxy \
-             tanel/tor-proxy
-}
-
-go-status() {
-  START=$PWD
-  for p in $(find ${GOPATH}/src/gitlab.com/tanel ${GOPATH}/src/github.com/tanelpuhu  -maxdepth 2 -type d -name .git); do
-    cd $p/..
-    pwd
-    git status -bs
-  done
-  cd $START
 }
