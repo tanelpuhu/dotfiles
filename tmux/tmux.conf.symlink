@@ -13,7 +13,7 @@ set -g status-bg '#333333'
 set -g status-fg '#aaaaaa'
 
 set -g status-left " "
-set -g status-right "#(panelscripts -all)"
+set -g status-right "#(panelscripts -tmux)"
 set -g status-right-length 120
 set -g status-interval 5
 
