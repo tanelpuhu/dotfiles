@@ -15,6 +15,7 @@
 
 [alias]
   a = add -p
+  c = co -p
   p = log -p
   st = status -bs
   br = branch
@@ -23,6 +24,7 @@
   di = diff --relative
   fa = fetch --all --prune
   lol = log --graph --decorate --oneline
+  lola = lol --all
   sha = rev-parse HEAD
   prod = push production
   sup = svn rebase -q

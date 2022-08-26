@@ -5,6 +5,9 @@ unbind C-b
 set -g prefix C-a
 bind-key C-a last-window
 
+unbind C-s
+bind-key C-s run "bash ~/local/bin/tmux-toggle-status.sh"
+
 # start window numbers at 1 to match keyboard order with tmux window order
 set -g base-index 1
 

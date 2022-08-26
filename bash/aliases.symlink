@@ -12,11 +12,13 @@ alias dl='cd ~/Downloads'
 alias tmux='tmux -2'
 alias t='tmux -2 attach'
 alias g='subl'
+alias b='black --line-length 119 --skip-string-normalization'
 
 alias df='df -h'
 alias up='svn up'
 
 alias sudo='sudo '
+alias xarg='xargs -n 1'
 
 command -v ack &> /dev/null && alias grep=ack || alias grep='grep --exclude-dir=.git --exclude-dir=.svn --color=auto'
 command -v ag &> /dev/null && alias ag="ag --color-match '1;31;49'"
