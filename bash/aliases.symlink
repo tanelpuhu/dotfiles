@@ -19,8 +19,18 @@ alias up='svn up'
 alias sudo='sudo '
 alias xarg='xargs -n 1'
 
-alias ag="ag --color-match '1;31;49'"
-alias grep="ag --color-match '1;31;49'"
+command -v ag &> /dev/null
+if [[ $? -eq 0 ]]; then
+  alias ag="ag --color-match '1;31;49'"
+  alias grep="ag --color-match '1;31;49'"
+else
+  command -v ack &> /dev/null
+  if [[ $? -eq 0 ]]; then
+    alias grep=ack
+  else
+    alias grep='grep --exclude-dir=.git --exclude-dir=.svn --color=auto'
+  fi
+fi
 
 alias pyserv='python3 -m http.server'
 alias minio='s3cmd --config ~/.minio'
