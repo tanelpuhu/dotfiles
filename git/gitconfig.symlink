@@ -1,6 +1,6 @@
 [user]
-  name = Tanel Puhu
-  email = tanel@tanelpuhu.com
+  name = tanel
+  email = tanel@lusikas.com
   signingkey = CCB0751E97A6299881403FA118FD1DED30F6CF4A
 
 [color]
@@ -16,7 +16,9 @@
 [alias]
   a = add -p
   c = co -p
+  r = reset -p
   p = log -p
+  s = status
   st = status -bs
   br = branch
   ci = commit

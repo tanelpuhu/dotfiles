@@ -20,8 +20,8 @@ alias up='svn up'
 alias sudo='sudo '
 alias xarg='xargs -n 1'
 
-command -v ack &> /dev/null && alias grep=ack || alias grep='grep --exclude-dir=.git --exclude-dir=.svn --color=auto'
-command -v ag &> /dev/null && alias ag="ag --color-match '1;31;49'"
+alias ag="ag --color-match '1;31;49'"
+alias grep="ag --color-match '1;31;49'"
 
 
 alias pyserv='python3 -m http.server'
