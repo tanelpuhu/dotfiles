@@ -27,13 +27,6 @@ tnl_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/'
 }
 
-tnl_svn_repo() {
-  # go get -u github.com/tanelpuhu/svn-info-xml-to-ps1
-  if [[ -x ${GOPATH}/bin/svn-info-xml-to-ps1 ]]; then
-    svn info --xml 2> /dev/null | ${GOPATH}/bin/svn-info-xml-to-ps1
-  fi
-}
-
 tnl_background_jobs() {
   if [[ -x $GOPATH/bin/jobs-info-to-ps1 ]]; then
     jobs -p -r | jobs-info-to-ps1
@@ -48,7 +41,6 @@ fi
 _MYPROMPT="\u@${_MYHOST}:\w\[${_RED}\]\$(tnl_last_exit)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_YELLOW}\]\$(tnl_background_jobs)\[${_RESET}\]"
 _MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_git_branch)\[${_RESET}\]"
-_MYPROMPT="${_MYPROMPT}\[${_GREEN}\]\$(tnl_svn_repo)\[${_RESET}\]"
 export PS1=${_MYPROMPT}'\$ '
 
 # No pyc files
@@ -65,7 +57,6 @@ fi
 
 export GIT_EDITOR=${EDITOR}
 export GUI_EDITOR=${EDITOR}
-export SVN_EDITOR=${EDITOR}
 
 # Don't clear the screen after quitting a manual page
 export MANPAGER="less -X"
@@ -90,8 +81,10 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # AWS
-export AWS_DEFAULT_REGION="eu-central-1"
+export AWS_DEFAULT_REGION=eu-central-1
 export BOTO_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+
+export GOOGLE_DEFAULT_REGION=europe-north1
 
 # Terminal
 export TERM=xterm-256color

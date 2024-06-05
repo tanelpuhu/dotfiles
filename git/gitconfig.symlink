@@ -12,6 +12,7 @@
 
 [include]
   path = .gitconfig.private
+  path = .gitconfig.wurx
 
 [alias]
   a = add -p
@@ -25,6 +26,8 @@
   co = checkout
   di = diff --relative
   fa = fetch --all --prune
+  fo = fetch origin --prune
+  fu = fetch upstream --prune
   lol = log --graph --decorate --oneline
   lola = lol --all
   sha = rev-parse HEAD
