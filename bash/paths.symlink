@@ -4,15 +4,17 @@ path_if_exists() {
     fi
 }
 
+path_if_exists /usr/bin
 path_if_exists "/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources"
 path_if_exists "$HOME/Library/Python/2.7/bin/"
 path_if_exists "$HOME/Library/Python/3.6/bin/"
 path_if_exists "$HOME/Library/Python/3.7/bin/"
 path_if_exists "$HOME/Library/Python/3.8/bin/"
+path_if_exists "$HOME/Library/Python/3.9/bin/"
 path_if_exists "/usr/local/go/bin"
 path_if_exists "$HOME/local/bin"
 path_if_exists "$HOME/.local/bin/"
 path_if_exists "$HOME/bin/wurx"
 path_if_exists "$HOME/bin/tools"
 path_if_exists "$HOME/bin"
-path_if_exists /usr/bin
+path_if_exists /opt/homebrew/bin/
