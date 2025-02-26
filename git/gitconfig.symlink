@@ -1,7 +1,7 @@
 [user]
   name = tanel
   email = tanel@lusikas.com
-  signingkey = CCB0751E97A6299881403FA118FD1DED30F6CF4A
+  signingkey = ~/.ssh/id_ed25519.pub
 
 [color]
   ui = true
@@ -66,13 +66,21 @@
   enabled = 1
 
 [gpg]
-  program = /usr/local/bin/gpg
+  format = ssh
 
 [diff]
   noprefix = true
+  algorithm = histogram
 
 [commit]
-  gpgsign = false
+  gpgsign = true
+  verbose = true
 
 [http]
   sslVerify = true
+
+[init]
+  defaultBranch = master
+
+[tag]
+  gpgsign = true
